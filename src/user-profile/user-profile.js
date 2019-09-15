@@ -37,7 +37,8 @@ export default function UserProfile({
 
             <div>
                 <h2>Biography:</h2>
-                <p>{biographyText}</p>
+                {!biographyText && <p>There is currently no biography.</p>}
+                {biographyText && <p>{biographyText}</p>}
             </div>
             <div>
                 <BiographyEditor
@@ -47,9 +48,14 @@ export default function UserProfile({
             </div>
             <div>
                 <h2>Birthday:</h2>
-                <p>
-                    {birthdayDay} - {birthdayMonth} - {birthdayYear}
-                </p>
+                {!birthdayDay && !birthdayMonth && !birthdayYear && (
+                    <p>The date of your birthday is currently unknown.</p>
+                )}
+                {(birthdayDay || birthdayMonth || birthdayYear) && (
+                    <p>
+                        {birthdayDay} - {birthdayMonth} - {birthdayYear}
+                    </p>
+                )}
             </div>
             <div>
                 <AddBirthday
