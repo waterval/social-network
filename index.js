@@ -71,7 +71,7 @@ app.get("/welcome", function(request, response) {
     if (request.session.userId) {
         response.redirect("/");
     } else {
-        response.sendFile(__dirname + "/public/index.html");
+        response.sendFile(__dirname + "/index.html");
     }
 });
 
@@ -344,7 +344,7 @@ app.get("*", (request, response) => {
     if (!request.session.userId) {
         response.redirect("/welcome");
     } else {
-        response.sendFile(__dirname + "/public/index.html");
+        response.sendFile(__dirname + "/index.html");
     }
 });
 
@@ -376,4 +376,4 @@ io.on("connection", async socket => {
     });
 });
 
-server.listen(8080, () => console.log("App is listening!"));
+server.listen(process.env.PORT || 8080, () => console.log("App is listening!"));
