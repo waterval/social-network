@@ -23,7 +23,12 @@ export default class App extends React.Component {
     }
     render() {
         if (!this.state.id) {
-            return <div>Page is loading...</div>;
+            return (
+                <div>
+                    Page is loading... Content only viewable when you are
+                    <a href="/welcome">logged in</a>.
+                </div>
+            );
         }
         return (
             <BrowserRouter>
