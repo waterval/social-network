@@ -25,8 +25,10 @@ export default class App extends React.Component {
         if (!this.state.id) {
             return (
                 <div>
-                    Page is loading... Content only viewable when you are
-                    <a href="/welcome">logged in</a>.
+                    Please make sure you are{" "}
+                    <a href="/welcome#/login">logged in</a>. Our network is only
+                    viewable by members. Not a member yet? Feel free to{" "}
+                    <a href="/welcome">register</a>.
                 </div>
             );
         }
