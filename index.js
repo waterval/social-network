@@ -340,7 +340,7 @@ app.post("/api/friends/decline-friend/:otherId", async (request, response) => {
     }
 });
 
-app.get("*", (request, response) => {
+app.get("/*", (request, response) => {
     if (!request.session.userId) {
         response.redirect("/welcome");
     } else {
