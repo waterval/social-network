@@ -18,7 +18,6 @@ export default function Friends() {
             state.users &&
             state.users.filter(user => user.friend_request_accepted == true)
     );
-
     useEffect(() => {
         dispatch(getFriendsAndRequesters());
     }, []);
@@ -57,7 +56,7 @@ export default function Friends() {
                         </div>
                     ))}
             </div>
-            {!requesters && (
+            {!requesters.length === 0 && (
                 <div>
                     <p>Currently there are no friend requests.</p>
                 </div>
