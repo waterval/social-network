@@ -7,6 +7,7 @@ export default class AddBirthday extends React.Component {
         this.state = {};
         this.userInput = this.userInput.bind(this);
         this.addBirthday = this.addBirthday.bind(this);
+        this.optionGenerator = this.optionGenerator.bind(this);
     }
     userInput(event) {
         this.setState({
@@ -24,6 +25,7 @@ export default class AddBirthday extends React.Component {
             this.props.updateBirthdayDay(this.state.birthdayDay);
             this.props.updateBirthdayMonth(this.state.birthdayMonth);
             this.props.updateBirthdayYear(this.state.birthdayYear);
+            this.setState({ editBirthday: false });
         } catch (error) {
             console.log(
                 "error inside add-birthday.js in async addBirthday: ",
@@ -31,30 +33,90 @@ export default class AddBirthday extends React.Component {
             );
         }
     }
+    optionGenerator(startingNumber, endingNumber) {
+        let options = [];
+        for (let i = startingNumber; i < endingNumber; i++) {
+            options.push(
+                <option key={i} value={i}>
+                    {i}
+                </option>
+            );
+        }
+        return options;
+    }
     render() {
+        let dayOptions = this.optionGenerator(1, 32);
+        let monthOptions = this.optionGenerator(1, 13);
+        let yearOptions = this.optionGenerator(1899, 2020);
+        yearOptions.reverse();
+        let birthdayButtonText;
+        if (
+            this.props.birthdayDay ||
+            this.props.birthdayMonth ||
+            this.props.birthdayYear
+        ) {
+            birthdayButtonText = "Edit birthday";
+        } else {
+            birthdayButtonText = "Add birthday";
+        }
         return (
             <div>
-                <label>
-                    Day:
-                    <input name="birthdayDay" onChange={this.userInput} />
-                </label>
-                <label>
-                    Month:
-                    <input name="birthdayMonth" onChange={this.userInput} />
-                </label>
-                <label>
-                    Year:
-                    <input name="birthdayYear" onChange={this.userInput} />
-                </label>
-                {!this.props.birthdayDay &&
-                    !this.props.birthdayMonth &&
-                    !this.props.birthdayYear && (
-                    <button onClick={this.addBirthday}>Add birthday</button>
+                {this.state.editBirthday && (
+                    <div>
+                        <label>
+                            Day:
+                            <select
+                                id="birthdayDay"
+                                name="birthdayDay"
+                                onChange={this.userInput}
+                            >
+                                <option key="0" value="">
+                                    -
+                                </option>
+                                {dayOptions}
+                            </select>
+                        </label>
+                        <label>
+                            Month:
+                            <select
+                                id="birthdayMonth"
+                                name="birthdayMonth"
+                                type="number"
+                                onChange={this.userInput}
+                            >
+                                <option key="0" value="">
+                                    -
+                                </option>
+                                {monthOptions}
+                            </select>
+                        </label>
+                        <label>
+                            Year:
+                            <select
+                                id="birthdayYear"
+                                name="birthdayYear"
+                                type="number"
+                                onChange={this.userInput}
+                            >
+                                <option key="0" value="">
+                                    -
+                                </option>
+                                {yearOptions}
+                            </select>
+                        </label>
+                        <button onClick={this.addBirthday}>Add birthday</button>
+                    </div>
                 )}
-                {(this.props.birthdayDay ||
-                    this.props.birthdayMonth ||
-                    this.props.birthdayYear) && (
-                    <button onClick={this.addBirthday}>Edit birthday</button>
+                {!this.state.editBirthday && (
+                    <div>
+                        <button
+                            onClick={event =>
+                                this.setState({ editBirthday: true })
+                            }
+                        >
+                            {birthdayButtonText}
+                        </button>
+                    </div>
                 )}
             </div>
         );
