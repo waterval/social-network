@@ -270,7 +270,7 @@ app.post(
                 buttonText == "Remove friend" ||
                 buttonText == "Cancel friend request"
             ) {
-                await database.deleteFriendOrRequest(userId, otherId);
+                await database.deleteFriendOrRequester(userId, otherId);
                 response.json({ tableUpdated: true });
             }
         } catch (error) {
@@ -337,14 +337,6 @@ app.post("/api/friends/decline-friend/:otherId", async (request, response) => {
             error
         );
         response.json({ success: false });
-    }
-});
-
-app.get("/", (request, response) => {
-    if (!request.session.userId) {
-        response.redirect("/welcome");
-    } else {
-        response.sendFile(__dirname + "/index.html");
     }
 });
 
