@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function BirthdayMonth({ month, monthIndex }) {
     const monthNames = {
@@ -22,7 +23,7 @@ export default function BirthdayMonth({ month, monthIndex }) {
             {month &&
                 month.map(user => (
                     <div key={user.id} className="birthday-image-container">
-                        <a href={"/users/" + user.id}>
+                        <Link to={`/users/${user.id}`}>
                             <img
                                 src={user.image || "/ninja.png"}
                                 className="birthday-image"
@@ -33,7 +34,7 @@ export default function BirthdayMonth({ month, monthIndex }) {
                                 alt={`${user.forename} ${user.surname}`}
                                 title={`${user.forename} ${user.surname} is born on ${user.birthday_day}-${user.birthday_month}-${user.birthday_year}.`}
                             />
-                        </a>
+                        </Link>
                         <div className="birthday-image-text">
                             {user.birthday_day}
                         </div>

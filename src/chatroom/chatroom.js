@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { socket } from "../app/socket";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Chatroom() {
     const latestChatMessages = useSelector(
@@ -17,6 +18,8 @@ export default function Chatroom() {
     if (!latestChatMessages && !elemRef) {
         return <p>Page loading...</p>;
     }
+
+    console.log("latestChatMessages: ", latestChatMessages);
 
     const keyCheck = event => {
         if (event.target.value.length === 0 && event.key === "Enter") {
@@ -42,7 +45,7 @@ export default function Chatroom() {
 
     return (
         <div>
-            <h1>Chat Room</h1>
+            <h1>Chatroom</h1>
             <div className="chatroom-container" ref={elemRef}>
                 {latestChatMessages &&
                     latestChatMessages.map(message => (
@@ -51,11 +54,13 @@ export default function Chatroom() {
                             className="chatroom-message-container"
                         >
                             <div>
-                                <img
-                                    className="chatroom-image"
-                                    src={message.image || "/ninja.png"}
-                                    alt={`${message.forename} ${message.surname}`}
-                                />
+                                <Link to={`/users/${message.sender_id}`}>
+                                    <img
+                                        className="chatroom-image"
+                                        src={message.image || "/ninja.png"}
+                                        alt={`${message.forename} ${message.surname}`}
+                                    />
+                                </Link>
                             </div>
                             <div className="chatroom-text-container">
                                 <p>

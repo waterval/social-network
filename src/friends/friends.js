@@ -5,6 +5,7 @@ import {
     acceptFriend,
     removeFriendOrRequester
 } from "./friends-actions";
+import { Link } from "react-router-dom";
 
 export default function Friends() {
     const dispatch = useDispatch();
@@ -32,7 +33,7 @@ export default function Friends() {
                 {requesters &&
                     requesters.map(user => (
                         <div key={user.id} className="friend-one-container">
-                            <a href={"/users/" + user.id}>
+                            <Link to={`/users/${user.id}`}>
                                 <img
                                     src={user.image || "/ninja.png"}
                                     className="profile-image"
@@ -40,7 +41,7 @@ export default function Friends() {
                                 <p>
                                     {user.forename} {user.surname}
                                 </p>
-                            </a>
+                            </Link>
                             <button
                                 onClick={e => dispatch(acceptFriend(user.id))}
                             >
@@ -67,7 +68,7 @@ export default function Friends() {
                     <div className="friends-all-container">
                         {friends.map(user => (
                             <div key={user.id} className="friend-one-container">
-                                <a href={"/users/" + user.id}>
+                                <Link to={`/users/${user.id}`}>
                                     <img
                                         src={user.image || "/ninja.png"}
                                         className="profile-image"
@@ -75,7 +76,7 @@ export default function Friends() {
                                     <p>
                                         {user.forename} {user.surname}
                                     </p>
-                                </a>
+                                </Link>
                                 <button
                                     onClick={e =>
                                         dispatch(

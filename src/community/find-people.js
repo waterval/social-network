@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../app/axios";
+import { Link } from "react-router-dom";
 
 export default function FindPeople() {
     const [userList, setUserList] = useState([]);
@@ -38,7 +39,7 @@ export default function FindPeople() {
                                 key={user.id}
                                 className="community-one-container"
                             >
-                                <a href={user.id}>
+                                <Link to={`/users/${user.id}`}>
                                     <img
                                         src={user.image || "/ninja.png"}
                                         className="profile-image"
@@ -50,7 +51,7 @@ export default function FindPeople() {
                                     <p>
                                         {user.forename} {user.surname}
                                     </p>
-                                </a>
+                                </Link>
                             </div>
                         ))}
                     </div>
@@ -68,7 +69,7 @@ export default function FindPeople() {
                                 key={user.id}
                                 className="community-one-container"
                             >
-                                <a href={user.id}>
+                                <Link to={`/users/${user.id}`}>
                                     <img
                                         src={user.image || "/ninja.png"}
                                         className="profile-image"
@@ -80,7 +81,7 @@ export default function FindPeople() {
                                     <p>
                                         {user.forename} {user.surname}
                                     </p>
-                                </a>
+                                </Link>
                             </div>
                         ))}
                     </div>
