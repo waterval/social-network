@@ -80,6 +80,7 @@ export default class App extends React.Component {
                         </nav>
                         <ProfilePicture
                             displaySize={"50px"}
+                            ownClass={"header-image-container"}
                             forename={this.state.forename}
                             surname={this.state.surname}
                             image={this.state.image || "/ninja.png"}
@@ -95,6 +96,7 @@ export default class App extends React.Component {
                             render={() => (
                                 <UserProfile
                                     displaySize={"200px"}
+                                    ownClass={"user-image-container"}
                                     forename={this.state.forename}
                                     surname={this.state.surname}
                                     image={this.state.image || "/ninja.png"}

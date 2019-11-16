@@ -5,10 +5,11 @@ export default function ProfilePicture({
     surname,
     image,
     showUploadOption,
-    displaySize
+    displaySize,
+    ownClass
 }) {
     return (
-        <div className="user-image-icon">
+        <div className={ownClass}>
             <img
                 width={displaySize}
                 height={displaySize}

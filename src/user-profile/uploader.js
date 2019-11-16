@@ -36,7 +36,7 @@ export default class Uploader extends React.Component {
                     <p>X</p>
                 </div>
                 <p className="uploader-copy">
-                    Want to change your profile image?
+                    Would you like to change your profile image?
                 </p>
                 <input
                     onChange={this.uploadImage}

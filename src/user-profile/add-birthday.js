@@ -104,7 +104,11 @@ export default class AddBirthday extends React.Component {
                                 {yearOptions}
                             </select>
                         </label>
-                        <button onClick={this.addBirthday}>Add birthday</button>
+                        <div>
+                            <button onClick={this.addBirthday}>
+                                Add birthday
+                            </button>
+                        </div>
                     </div>
                 )}
                 {!this.state.editBirthday && (

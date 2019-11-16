@@ -11,6 +11,7 @@ export default function UserProfile({
     biographyText,
     updateBiography,
     displaySize,
+    ownClass,
     birthdayDay,
     birthdayMonth,
     birthdayYear,
@@ -28,6 +29,7 @@ export default function UserProfile({
             <div>
                 <ProfilePicture
                     displaySize={displaySize}
+                    ownClass={ownClass}
                     forename={forename}
                     surname={surname}
                     image={image}

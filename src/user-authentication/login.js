@@ -46,7 +46,7 @@ export default class Login extends React.Component {
                 </div>
                 <p>Log in to the community:</p>
                 <label className="welcome-label">
-                    Email address:
+                    Email:
                     <input
                         name="email"
                         onChange={this.userInput}

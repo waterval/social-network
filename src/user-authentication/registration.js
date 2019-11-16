@@ -68,7 +68,7 @@ export default class Registration extends React.Component {
                     />
                 </label>
                 <label className="welcome-label">
-                    Email address:
+                    Email:
                     <input
                         name="email"
                         onChange={this.userInput}
