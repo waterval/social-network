@@ -68,18 +68,20 @@ select {
     width: 100%;
 }
 
-.welcome-label {
+.welcome-field {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    line-height: 26px;
-    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-label {
+    width: 75px;
+    text-align: left;
 }
 
 .welcome-input {
-    height: 20px;
-    flex: 0 0 180px;
-    margin: auto 20px;
+    width: 200px;
 }
 
 .welcome-link {

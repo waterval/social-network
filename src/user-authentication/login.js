@@ -44,23 +44,24 @@ export default class Login extends React.Component {
                         </div>
                     )}
                 </div>
-                <p>Log in to the community:</p>
-                <label className="welcome-label">
-                    Email:
+                <p>Login to the community:</p>
+                <div className="welcome-field">
+                    <label className="welcome-label">Email:</label>
                     <input
                         name="email"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
-                </label>
-                <label className="welcome-label">
-                    Password:
+                </div>
+                <div className="welcome-field">
+                    <label className="welcome-label">Password:</label>
                     <input
                         name="password"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
-                </label>
+                </div>
+
                 <button onClick={this.userLogin}>Login</button>
                 <p>
                     Not an account yet? Please{" "}

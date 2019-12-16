@@ -51,38 +51,38 @@ export default class Registration extends React.Component {
                     )}
                 </div>
                 <p>Feel free to join our community:</p>
-                <label className="welcome-label">
-                    First name:
+                <div className="welcome-field">
+                    <label className="welcome-label">First name:</label>
                     <input
                         name="forename"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
-                </label>
-                <label className="welcome-label">
-                    Last name:
+                </div>
+                <div className="welcome-field">
+                    <label className="welcome-label">Last name:</label>
                     <input
                         name="surname"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
-                </label>
-                <label className="welcome-label">
-                    Email:
+                </div>
+                <div className="welcome-field">
+                    <label className="welcome-label">Email:</label>
                     <input
                         name="email"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
-                </label>
-                <label className="welcome-label">
-                    Password:
+                </div>
+                <div className="welcome-field">
+                    <label className="welcome-label">Password:</label>
                     <input
                         name="password"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
-                </label>
+                </div>
                 <button onClick={this.createAccount}>
                     Create free account
                 </button>
