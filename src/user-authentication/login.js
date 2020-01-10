@@ -49,6 +49,7 @@ export default class Login extends React.Component {
                     <label className="welcome-label">Email:</label>
                     <input
                         name="email"
+                        type="email"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
@@ -57,6 +58,7 @@ export default class Login extends React.Component {
                     <label className="welcome-label">Password:</label>
                     <input
                         name="password"
+                        type="password"
                         onChange={this.userInput}
                         className="welcome-input"
                     />

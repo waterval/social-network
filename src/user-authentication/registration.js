@@ -55,6 +55,7 @@ export default class Registration extends React.Component {
                     <label className="welcome-label">First name:</label>
                     <input
                         name="forename"
+                        type="text"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
@@ -63,6 +64,7 @@ export default class Registration extends React.Component {
                     <label className="welcome-label">Last name:</label>
                     <input
                         name="surname"
+                        type="text"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
@@ -71,6 +73,7 @@ export default class Registration extends React.Component {
                     <label className="welcome-label">Email:</label>
                     <input
                         name="email"
+                        type="email"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
@@ -79,6 +82,7 @@ export default class Registration extends React.Component {
                     <label className="welcome-label">Password:</label>
                     <input
                         name="password"
+                        type="password"
                         onChange={this.userInput}
                         className="welcome-input"
                     />
