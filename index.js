@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
-const io = require("socket.io")(server, { origins: "localhost:8080" });
+const io = require("socket.io")(server, {
+    origins: "localhost:8080 social-network-waterval.herokuapp.com:*"
+});
 const compression = require("compression");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
