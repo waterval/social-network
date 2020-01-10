@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require("http").Server(app);
-const io = require("socket.io")(server, { origins: "192.168.50.*:8080" });
+const io = require("socket.io")(server, { origins: "localhost:8080" });
 const compression = require("compression");
 const cookieSession = require("cookie-session");
 const csurf = require("csurf");
@@ -12,21 +12,6 @@ const s3 = require("./utilities/s3");
 const config = require("./utilities/config");
 const bcrypt = require("./utilities/bcrypt");
 const database = require("./data/database");
-
-app.use(compression());
-
-if (process.env.NODE_ENV != "production") {
-    app.use(
-        "/bundle.js",
-        require("http-proxy-middleware")({
-            target: "http://localhost:8081/"
-        })
-    );
-} else {
-    app.use("/bundle.js", (request, response) =>
-        response.sendFile(`${__dirname}/bundle.js`)
-    );
-}
 
 const diskStorage = multer.diskStorage({
     destination: function(request, file, callback) {
@@ -67,6 +52,21 @@ app.use((request, response, next) => {
     response.cookie("mytoken", request.csrfToken());
     next();
 });
+
+app.use(compression());
+
+if (process.env.NODE_ENV != "production") {
+    app.use(
+        "/bundle.js",
+        require("http-proxy-middleware")({
+            target: "http://localhost:8081/"
+        })
+    );
+} else {
+    app.use("/bundle.js", (request, response) =>
+        response.sendFile(`${__dirname}/bundle.js`)
+    );
+}
 
 app.get("/welcome", function(request, response) {
     if (request.session.userId) {
