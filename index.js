@@ -348,9 +348,10 @@ app.get("*", (request, response) => {
     }
 });
 
+server.listen(process.env.PORT || 8080, () => console.log("App is listening!"));
+
 io.on("connection", async socket => {
     const userId = socket.request.session.userId;
-
     try {
         const data = await database.getLatestChatMessages();
         socket.emit("Get Latest Chat Messages", data);
@@ -375,5 +376,3 @@ io.on("connection", async socket => {
         }
     });
 });
-
-server.listen(process.env.PORT || 8080, () => console.log("App is listening!"));
